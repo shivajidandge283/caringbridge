@@ -8,27 +8,22 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "USER_DTL")
+@Table(name = "ACTIVITY_DTL")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends BaseEntity implements Serializable {
+public class Activity extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-    private String firstName;
+    private String activityName;
+
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name="PATIENT_ID")
+    private User patient;
 
     @Column
-    private String lastName;
-
-    @Column(unique = true)
-    private String email;
-
-    @Column
-    private String phoneNumber;
-
-    @Column
-    private String password;
+    private String frequency;
 }

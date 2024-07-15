@@ -38,4 +38,11 @@ public class UserService {
         User user = userRepository.findByEmailAndPassword(email, password);
         return null != user ? true : false;
     }
+
+    public User updateUser(User user) {
+        if(null != user.getId()) {
+            return userRepository.save(user);
+        }
+        return null;
+    }
 }

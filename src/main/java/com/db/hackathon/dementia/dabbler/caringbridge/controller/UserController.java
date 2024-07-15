@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-public class Controller {
+public class UserController {
 
     private final UserService userService;
 
     @Autowired
-    public Controller(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -41,6 +41,12 @@ public class Controller {
     @PostMapping("/login")
     public boolean login(@RequestBody User user) {
         return userService.findByEmailAndPassword(user.getEmail(), user.getPassword());
+    }
+
+    @PostMapping("/patient")
+    public User updateUser(@RequestBody User user) {
+        log.info("User is {} ", user);
+        return userService.updateUser(user);
     }
 }
 
