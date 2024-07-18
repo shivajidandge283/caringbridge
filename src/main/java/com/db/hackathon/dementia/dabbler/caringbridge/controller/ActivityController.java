@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ActivityController {
 
     private final ActivityService activityService;

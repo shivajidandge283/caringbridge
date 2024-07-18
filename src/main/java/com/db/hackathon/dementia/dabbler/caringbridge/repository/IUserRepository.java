@@ -5,12 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 
-public interface IUserRepository extends CrudRepository<User, Long>, JpaRepository<User, Long>,
-        JpaSpecificationExecutor<User> {
+public interface IUserRepository extends JpaRepository<User, Long>{
 
-    boolean existsByEmail(String email);
+boolean existsByEmail(String email);
 
-    User findByPhoneNumber(String phoneNumber);
+    User findByMobileNumber(String phoneNumber);
 
-    User findByEmailAndPassword(String email, String password);
+    User findByEmail(String email);
 }

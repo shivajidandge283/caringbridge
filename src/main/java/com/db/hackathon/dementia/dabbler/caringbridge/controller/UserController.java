@@ -5,9 +5,14 @@ import com.db.hackathon.dementia.dabbler.caringbridge.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController
 @Slf4j
+@RequestMapping("/users")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 
     private final UserService userService;
@@ -40,13 +45,18 @@ public class UserController {
 
     @PostMapping("/login")
     public boolean login(@RequestBody User user) {
-        return userService.findByEmailAndPassword(user.getEmail(), user.getPassword());
+        return userService.findByEmail(user.getEmail());
     }
 
     @PostMapping("/patient")
     public User updateUser(@RequestBody User user) {
         log.info("User is {} ", user);
         return userService.updateUser(user);
+    }
+
+    @PostMapping("/upload")
+    public String uploadProfilePhoto(@RequestParam("file") MultipartFile file) throws IOException {
+        return userService.uploadFile(file);
     }
 }
 

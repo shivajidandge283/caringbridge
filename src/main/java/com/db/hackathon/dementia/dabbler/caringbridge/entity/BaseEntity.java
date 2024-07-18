@@ -6,12 +6,15 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import lombok.Data;
 import lombok.Generated;
+import lombok.ToString;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
 @Data
 @Generated
 @MappedSuperclass
+@ToString
 public class BaseEntity {
 
     private static final int LENGTH_1 = 100;
@@ -21,16 +24,12 @@ public class BaseEntity {
     private static final int LENGTH_1000 = 1000;
     private static final int LENGTH_4000 = 4000;
 
-    @Column(name = "CREATED_DATE", nullable = false)
     private Timestamp createdDate;
 
-    @Column(name = "CREATED_BY", length = LENGTH_30, nullable = false)
     private String createdBy;
 
-    @Column(name = "UPDATED_DATE", nullable = false)
     private Timestamp updatedDate;
 
-    @Column(name = "UPDATED_BY", length = LENGTH_30, nullable = false)
     private String updatedBy;
 
     @PrePersist
@@ -46,13 +45,5 @@ public class BaseEntity {
         updatedDate = new Timestamp(new Date().getTime());
     }
 
-    @Override
-    public String toString() {
-        return "BaseEntity{" +
-                "createdDate=" + createdDate +
-                ", createdBy='" + createdBy + '\'' +
-                ", updatedDate=" + updatedDate +
-                ", updatedBy='" + updatedBy + '\'' +
-                '}';
-    }
+
 }
