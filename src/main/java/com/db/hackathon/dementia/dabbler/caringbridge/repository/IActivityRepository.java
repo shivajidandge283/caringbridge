@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 
-public interface IActivityRepository extends CrudRepository<Activity, Long>, JpaRepository<Activity, Long>,
-        JpaSpecificationExecutor<Activity> {
+public interface IActivityRepository extends  JpaRepository<Activity, Long>
+       {
 
 }

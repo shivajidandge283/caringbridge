@@ -5,30 +5,29 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "USER_DTL")
+@Table(name = "USERS")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends BaseEntity implements Serializable {
-
+public class User extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column
+    private String userType;
     private String firstName;
-
-    @Column
+    private String middleName;
     private String lastName;
-
-    @Column(unique = true)
     private String email;
+    private LocalDate dateOfBirth;
+    private String address;
+    private String mobileNumber;
+    private String hobby;
+    private String gender;
+    private String profilePhoto;
+    private String emergencyContactNumber;
+    private String patientMobileNumber;
 
-    @Column
-    private String phoneNumber;
-
-    @Column
-    private String password;
 }
