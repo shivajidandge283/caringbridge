@@ -17,7 +17,7 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
 
-    @GetMapping
+    @GetMapping("/{UserId}")
     public List<Question> getQuizQuestions(@PathVariable String UserId){
         return questionService.getQuizQuestions(UserId);
     }
