@@ -31,4 +31,7 @@ public class Question implements Serializable {
     @Column
     private String imageUrl;
 
+    @Column
+    private String User_id;
+
 }

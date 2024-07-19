@@ -19,7 +19,7 @@ public class UserService {
 
     private final IUserRepository userRepository;
 
-    @Value("${gcp.bucket.name}")
+   // @Value("${gcp.bucket.name}")
     private String bucketName;
 
     private final Storage storage = StorageOptions.getDefaultInstance().getService();

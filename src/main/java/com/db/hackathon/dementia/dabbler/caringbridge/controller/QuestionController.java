@@ -18,8 +18,8 @@ public class QuestionController {
     QuestionService questionService;
 
     @GetMapping
-    public List<Question> getQuizQuestions(){
-        return questionService.getQuizQuestions();
+    public List<Question> getQuizQuestions(@PathVariable String UserId){
+        return questionService.getQuizQuestions(UserId);
     }
 
     @PostMapping("/attempts/{attemptId}")
